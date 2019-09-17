@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Follow: {fileID: 212462730}
-  yOffset: 1.25
+  Wiggle: {x: 1.5, y: 1}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
