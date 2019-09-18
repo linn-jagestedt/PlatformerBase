@@ -19,13 +19,13 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag.ToLower() == "ground")
+        if(collision.collider.tag == "Ground")
         { _grounded = true; }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.tag.ToLower() == "ground")
+        if (collision.collider.tag == "Ground")
         { _grounded = false; }
     }
 
