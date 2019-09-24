@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Death
   - Enemy
+  - GameOver
   layers:
   - Default
   - TransparentFX
@@ -44,12 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Platform
-    uniqueID: 3692215475
+  - name: Background
+    uniqueID: 1607932815
     locked: 0
   - name: Foreground
     uniqueID: 3608239613
     locked: 0
-  - name: Background
-    uniqueID: 1607932815
+  - name: Platform
+    uniqueID: 3692215475
+    locked: 0
+  - name: UI
+    uniqueID: 4075238969
     locked: 0

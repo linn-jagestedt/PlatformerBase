@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         { temp.y = JumpForce; }
 
         if (UseRigidBody)
-        { GetComponent<Rigidbody2D>().AddForce(temp * 4); }
+        { temp.y *= 2; GetComponent<Rigidbody2D>().AddForce(temp * 2); }
         else
         { GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x, GetComponent<Rigidbody2D>().velocity.y + temp.y / 12); }
     }
