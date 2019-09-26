@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private int _health;
     private int _invcibilityCounter;
 
-    public GameObject GameOverScreen;
+    public string GameOverScreen;
     public Transform Respawn;
     public int StartHealth;
     public int MaxHealth;
@@ -46,7 +47,6 @@ public class PlayerHealth : MonoBehaviour
     {
         _health = StartHealth;
         _invcibilityCounter = 10;
-        GameOverScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -64,8 +64,7 @@ public class PlayerHealth : MonoBehaviour
 
         if(_health == 0)
         {
-            GameOverScreen.SetActive(true);
-            gameObject.SetActive(false);
+            SceneManager.LoadScene(GameOverScreen, LoadSceneMode.Single);     
         }
     }
 
@@ -73,7 +72,6 @@ public class PlayerHealth : MonoBehaviour
     {
         _health = StartHealth;
         transform.position = Respawn.position;
-        GameOverScreen.SetActive(false);
         gameObject.SetActive(true);
     }
 }
