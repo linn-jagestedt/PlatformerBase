@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Range(0,10)]
+    [Range(5, 50)]
     public float MovementSpeed;
-    [Range(10, 50)]
+    [Range(100, 500)]
     public float JumpForce;
 
-    public bool UseRigidBody;
+    public bool SmoothMotion;
+    public bool DirectionalFlip;
 
     private bool _grounded;
 
@@ -31,18 +32,34 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 temp = new Vector2();
+        Vector2 _vInput = new Vector2();
 
         if(Input.GetKey(KeyCode.A))
-        { temp.x = -MovementSpeed; }
-        if (Input.GetKey(KeyCode.D))
-        { temp.x = MovementSpeed; }
-        if(_grounded && Input.GetKey(KeyCode.Space))
-        { temp.y = JumpForce; }
+        { _vInput.x = -MovementSpeed; }
 
-        if (UseRigidBody)
-        { temp.y *= 2; GetComponent<Rigidbody2D>().AddForce(temp * 2); }
-        else
-        { GetComponent<Rigidbody2D>().velocity = new Vector2(temp.x, GetComponent<Rigidbody2D>().velocity.y + temp.y / 12); }
+        if (Input.GetKey(KeyCode.D))
+        { _vInput.x = MovementSpeed; }
+
+        if(_grounded && Input.GetKey(KeyCode.Space))
+        { _vInput.y = JumpForce; }
+
+        Rigidbody2D _rigid = GetComponent<Rigidbody2D>();
+
+        if (SmoothMotion && _grounded) 
+        { _rigid.AddForce(_vInput); } 
+        else 
+        { _rigid.velocity = new Vector2(_vInput.x / 4, _rigid.velocity.y + _vInput.y / 50); } //divides by 6 as compensation for the lower force required compared to using Addforce.
+
+        GetComponent<Animator>().SetFloat("Running", System.Math.Abs(_vInput.x));
+        GetComponent<Animator>().SetFloat("Jumping", _rigid.velocity.y);
+        GetComponent<Animator>().SetBool("Grounded", _grounded);
+
+        if (DirectionalFlip && _vInput.x < 0) { GetComponent<SpriteRenderer>().flipX = true; }
+        else if (DirectionalFlip && _vInput.x > 0) { GetComponent<SpriteRenderer>().flipX = false; }
+    }
+
+    public void Flip()
+    {
+
     }
 }
