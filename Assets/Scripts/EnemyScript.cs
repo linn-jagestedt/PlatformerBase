@@ -37,7 +37,7 @@ public class EnemyScript : MonoBehaviour
             if (_player.transform.position.x < transform.position.x) { v = new Vector2(-KnockBack, 0); }
             else { v = new Vector2(KnockBack, 0); }
             _player.GetComponent<Rigidbody2D>().AddForce(v);
-            _player.GetComponent<PlayerHealth>().Health--;
+            _player.GetComponent<PlayerHealth>().Value--;
         }
     }
 }
