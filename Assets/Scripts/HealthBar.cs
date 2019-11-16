@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UICounter : MonoBehaviour
+public class HealthBar: MonoBehaviour
 {
     public Sprite[] Sprites;
-    public Counter Health;
+    public PlayerHealth PlayerHealth;
     private Image _img;
 
     // Start is called before the first frame update
@@ -17,13 +17,13 @@ public class UICounter : MonoBehaviour
 
     public void Update()
     {
-        int _index = Health.Value;
+        int _index = PlayerHealth.Health;
 
         if(_index > Sprites.Length) 
         { _index = Sprites.Length; }
         if(_index < 0) 
         { _index = 0; }
 
-        _img.sprite = Sprites[Health.Value];
+        _img.sprite = Sprites[PlayerHealth.Health];
     }
 }

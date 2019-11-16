@@ -10,7 +10,7 @@ public class DeathZone : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-           player.GetComponent<PlayerHealth>().Value = 0;
+           player.GetComponent<PlayerHealth>().Health = 0;
         }
     }
 
@@ -18,11 +18,5 @@ public class DeathZone : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

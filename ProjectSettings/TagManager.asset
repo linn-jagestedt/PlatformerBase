@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
   - Death
   - Enemy
   - GameOver
+  - EnemyAttack
+  - PlayerAttack
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
