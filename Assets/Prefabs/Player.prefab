@@ -100,9 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719171ed2198de74ea4c129f83b5f79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 16
+  MovementSpeed: 200
   JumpForce: 150
-  SmoothMotion: 0
   DirectionalFlip: 1
   GroundCheck: {fileID: 8500973293898066447}
   GroundLayer:
@@ -122,7 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverScreen: GameOver
   Respawn: {fileID: 0}
-  StartHealth: 3
   MaxHealth: 3
   Invincible: 0
 --- !u!114 &5554932510808104766

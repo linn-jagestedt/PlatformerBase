@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Range(5, 50)]
+    [Range(100, 400)]
     public float MovementSpeed;
     [Range(100, 300)]
     public float JumpForce;
 
-    public bool SmoothMotion;
     public bool DirectionalFlip;
 
     public Transform GroundCheck;
@@ -29,16 +28,7 @@ public class PlayerMovement : MonoBehaviour
         _grounded = IsGrounded();
         Vector2 _vInput = GetInput();
 
-        if (SmoothMotion) 
-        {
-            //Uses physics to push the player
-            _rigid.AddForce(_vInput); 
-        } 
-        else 
-        {
-            //less force is required to move the player the to push the player, hence /4 and /50.
-            _rigid.velocity = new Vector2(_vInput.x / 4, _rigid.velocity.y + _vInput.y / 50); 
-        } 
+        _rigid.velocity = new Vector2(_vInput.x * Time.deltaTime, _rigid.velocity.y + _vInput.y * Time.deltaTime);
 
         //Calls the apropriate animation for the movement
         GetComponent<Animator>().SetFloat("Running", System.Math.Abs(_vInput.x));

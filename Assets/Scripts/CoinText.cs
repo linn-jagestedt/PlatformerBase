@@ -17,6 +17,6 @@ public class CoinText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _text.text = CoinCollector.CoinAmount.ToString() + "G";
+        if (CoinCollector != null) { _text.text = CoinCollector.CoinAmount.ToString() + "G"; }
     }
 }
